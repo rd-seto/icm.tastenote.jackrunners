@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #4A2C2A;
+    color: #FFF;
+    padding: 1rem 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 130px;
+    height: auto;
+
+}
+
+.title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.search {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.5rem;
+    border: 2px solid #4A2C2A;
+    border-radius: 4px;
+}
+
+/* Galeri Gambar */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.gallery-item {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+}
+
+/* Tampilan Zoom Fullscreen */
+.fullscreen-view {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.fullscreen-view img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+

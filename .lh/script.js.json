@@ -1,0 +1,26 @@
+{
+    "sourceFile": "script.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1742002989918,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1742004165984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,5 @@\n-function goHome() {\n-    window.location.href = '/';\n-}\n-\n-function goBack() {\n-    window.history.back();\n-}\n-\n-// Efek Zoom Fullscreen\n+// Galeri Gambar\n const galleryItems = document.querySelectorAll('.gallery-item');\n const fullscreenView = document.getElementById('fullscreen-view');\n const fullscreenImg = document.getElementById('fullscreen-img');\n \n@@ -20,4 +12,27 @@\n \n fullscreenView.addEventListener('click', () => {\n     fullscreenView.style.display = 'none';\n });\n+\n+// Inisialisasi Peta\n+const map = L.map('map').setView([-2.5, 118], 5); \n+\n+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {\n+    attribution: '&copy; OpenStreetMap contributors'\n+}).addTo(map);\n+\n+const locations = [\n+    { name: \"Aceh\", coords: [5.5483, 95.3238] },\n+    { name: \"Jawa Barat\", coords: [-6.8899, 107.6405] },\n+    { name: \"Jawa Tengah\", coords: [-7.1500, 110.1403] },\n+    { name: \"Jawa Timur\", coords: [-7.2504, 112.7688] },\n+    { name: \"Bali\", coords: [-8.4095, 115.1889] },\n+    { name: \"Nusa Tenggara Barat\", coords: [-8.6529, 117.3616] },\n+    { name: \"Sulawesi Selatan\", coords: [-3.6688, 119.9741] }\n+];\n+\n+locations.forEach(location => {\n+    L.marker(location.coords)\n+        .addTo(map)\n+        .bindPopup(`<b>${location.name}</b>`);\n+});\n"
+                },
+                {
+                    "date": 1742007082579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,13 @@\n-// Galeri Gambar\n+function goHome() {\n+    window.location.href = '/';\n+}\n+\n+function goBack() {\n+    window.history.back();\n+}\n+\n+// Efek Zoom Fullscreen\n const galleryItems = document.querySelectorAll('.gallery-item');\n const fullscreenView = document.getElementById('fullscreen-view');\n const fullscreenImg = document.getElementById('fullscreen-img');\n \n@@ -13,26 +21,18 @@\n fullscreenView.addEventListener('click', () => {\n     fullscreenView.style.display = 'none';\n });\n \n-// Inisialisasi Peta\n-const map = L.map('map').setView([-2.5, 118], 5); \n+// Fungsi Pencarian\n+function searchGallery() {\n+    const searchInput = document.getElementById(\"search-input\").value.toLowerCase();\n+    const galleryItems = document.querySelectorAll(\".gallery-item\");\n \n-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {\n-    attribution: '&copy; OpenStreetMap contributors'\n-}).addTo(map);\n-\n-const locations = [\n-    { name: \"Aceh\", coords: [5.5483, 95.3238] },\n-    { name: \"Jawa Barat\", coords: [-6.8899, 107.6405] },\n-    { name: \"Jawa Tengah\", coords: [-7.1500, 110.1403] },\n-    { name: \"Jawa Timur\", coords: [-7.2504, 112.7688] },\n-    { name: \"Bali\", coords: [-8.4095, 115.1889] },\n-    { name: \"Nusa Tenggara Barat\", coords: [-8.6529, 117.3616] },\n-    { name: \"Sulawesi Selatan\", coords: [-3.6688, 119.9741] }\n-];\n-\n-locations.forEach(location => {\n-    L.marker(location.coords)\n-        .addTo(map)\n-        .bindPopup(`<b>${location.name}</b>`);\n-});\n+    galleryItems.forEach(item => {\n+        const altText = item.alt.toLowerCase();\n+        if (altText.includes(searchInput)) {\n+            item.style.display = \"inline-block\"; // Tampilkan jika cocok\n+        } else {\n+            item.style.display = \"none\"; // Sembunyikan jika tidak cocok\n+        }\n+    });\n+}\n"
+                }
+            ],
+            "date": 1742002989918,
+            "name": "Commit-0",
+            "content": "function goHome() {\n    window.location.href = '/';\n}\n\nfunction goBack() {\n    window.history.back();\n}\n\n// Efek Zoom Fullscreen\nconst galleryItems = document.querySelectorAll('.gallery-item');\nconst fullscreenView = document.getElementById('fullscreen-view');\nconst fullscreenImg = document.getElementById('fullscreen-img');\n\ngalleryItems.forEach(item => {\n    item.addEventListener('click', () => {\n        fullscreenImg.src = item.src;\n        fullscreenView.style.display = 'flex';\n    });\n});\n\nfullscreenView.addEventListener('click', () => {\n    fullscreenView.style.display = 'none';\n});\n"
+        }
+    ]
+}
